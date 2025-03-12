@@ -29,9 +29,6 @@ Primero, clona el repositorio a tu máquina local:
 ```bash
 # Clonar el repositorio
 git clone https://github.com/macnifice/e-commerce-net8.git
-
-# Navegar al directorio del proyecto
-cd prueba-tecnica-net
 ```
 
 ### 2. Configuración de la API (.NET)
