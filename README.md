@@ -18,10 +18,23 @@ Para ejecutar el proyecto localmente necesitarás:
 - [Angular CLI](https://angular.io/cli) (`npm install -g @angular/cli`)
 - [SQL Server](https://www.microsoft.com/es-es/sql-server/sql-server-downloads) (o SQL Server Express)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/es/downloads/) (recomendado) o [Visual Studio Code](https://code.visualstudio.com/)
+- [Git](https://git-scm.com/downloads) para clonar el repositorio
 
 ## Configuración y Ejecución Local
 
-### 1. Configuración de la API (.NET)
+### 1. Clonar el Repositorio
+
+Primero, clona el repositorio a tu máquina local:
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/macnifice/e-commerce-net8.git
+
+# Navegar al directorio del proyecto
+cd prueba-tecnica-net
+```
+
+### 2. Configuración de la API (.NET)
 
 ```bash
 # Navegar al directorio de la API
@@ -49,7 +62,7 @@ La API estará disponible en:
 - **API**: https://localhost:7211
 - **Swagger (Documentación API)**: https://localhost:7211/swagger
 
-### 2. Configuración de la UI (Angular)
+### 3. Configuración de la UI (Angular)
 
 ```bash
 # Navegar al directorio de la UI
@@ -57,9 +70,6 @@ cd ui
 
 # Instalar dependencias
 npm install
-
-# Verificar la configuración de URL de API
-# Edita ui/src/environments/environment.ts para asegurarte de que apiUrl apunte a https://localhost:7211
 
 # Iniciar el servidor de desarrollo
 npm start
