@@ -29,6 +29,9 @@ Primero, clona el repositorio a tu máquina local:
 ```bash
 # Clonar el repositorio
 git clone https://github.com/macnifice/e-commerce-net8.git
+
+# Navegar al directorio del proyecto
+cd e-commerce-net8
 ```
 
 ### 2. Configuración de la API (.NET)
@@ -62,6 +65,9 @@ La API estará disponible en:
 ### 3. Configuración de la UI (Angular)
 
 ```bash
+#Regresar directorio raiz
+cd ..
+
 # Navegar al directorio de la UI
 cd ui
 
