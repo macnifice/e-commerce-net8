@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace api.Data.EntityFramework.Migrations
 {
     /// <inheritdoc />
@@ -126,9 +128,52 @@ namespace api.Data.EntityFramework.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Articles",
+                columns: new[] { "Id", "Code", "Description", "ImagePath", "Name" },
+                values: new object[,]
+                {
+                    { 1, "LAP001", "Ultrabook de alto rendimiento con pantalla táctil 4K.", "https://m.media-amazon.com/images/I/91MXLpouhoL.jpg", "Laptop Dell XPS 13" },
+                    { 2, "IPH014", "Smartphone con cámara de 48 MP y procesador A16 Bionic.", "https://ss632.liverpool.com.mx/xl/1145923731.jpg", "iPhone 14 Pro" },
+                    { 3, "MON002", "Monitor UHD de 32 pulgadas con HDR10+.", "https://example.com/images/monitor-samsung-4k.jpg", "Monitor Samsung 4K" },
+                    { 4, "TEC004", "Teclado mecánico inalámbrico con switches táctiles.", "https://m.media-amazon.com/images/I/71dc-E1RYyL._AC_UF894,1000_QL80_.jpg", "Teclado Mecánico Logitech G915" },
+                    { 5, "MOU005", "Mouse ergonómico para gaming con sensor óptico de 20K DPI.", "https://ss637.liverpool.com.mx/xl/1134205390.jpg", "Mouse Razer DeathAdder" },
+                    { 6, "AUD006", "Auriculares inalámbricos con cancelación de ruido líder en la industria.", "https://www.sony.com.mx/image/6145c1d32e6ac8e63a46c912dc33c5bb?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF", "Auriculares Sony WH-1000XM5" },
+                    { 7, "SIL007", "Silla ergonómica con soporte lumbar ajustable y cuero sintético premium.", "https://images.secretlab.co/turntable/tr:n-w_450/M07-E24SU-MCLRN1R_02.jpg", "Silla Gamer Secretlab Titan Evo" },
+                    { 8, "TAB008", "Tablet con chip M2, pantalla Liquid Retina XDR y compatibilidad con Apple Pencil.", "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/112024_SP723-iPad_Pro.png", "Tablet iPad Pro 12.9" },
+                    { 9, "SSD009", "SSD NVMe con velocidades de lectura hasta 7000 MB/s.", "https://m.media-amazon.com/images/I/71GLjKuxf7L.jpg", "Disco SSD Samsung 980 Pro 1TB" },
+                    { 10, "REL010", "Smartwatch multideporte con GPS y batería de larga duración.", "https://cdn1.coppel.com/images/catalog/mkp/7463/3000/74631252-1.jpg", "Reloj Inteligente Garmin Fenix 7" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Stores",
+                columns: new[] { "Id", "Address", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Av. Principal 123, Ciudad Central, CP 10000", "Tech Store Centro" },
+                    { 2, "Calle Secundaria 456, Zona Norte, CP 20000", "Tech Store Norte" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Address", "Email", "LastName", "Name", "PasswordHash", "RefreshToken", "RefreshTokenExpiryTime", "Role", "UserName" },
                 values: new object[] { 1, null, null, "admin", "admin", "AQAAAAIAAYagAAAAEHCc0DphWlrKK1YwXC2Zytn0VnO5irnJF83/0PSceRJO9K4xfy0Ly8MCrUQpaVcBQg==", null, null, "Admin", "admin" });
+
+            migrationBuilder.InsertData(
+                table: "ArticleStores",
+                columns: new[] { "Id", "ArticleId", "Date", "Price", "Stock", "StoreId" },
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1299.99, 10, 1 },
+                    { 2, 2, new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), 999.99000000000001, 15, 1 },
+                    { 3, 3, new DateTime(2024, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 299.99000000000001, 20, 2 },
+                    { 4, 4, new DateTime(2024, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 199.99000000000001, 25, 2 },
+                    { 5, 5, new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 79.989999999999995, 30, 1 },
+                    { 6, 6, new DateTime(2024, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 349.99000000000001, 12, 2 },
+                    { 7, 7, new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), 499.99000000000001, 8, 1 },
+                    { 8, 8, new DateTime(2024, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), 1099.99, 5, 2 },
+                    { 9, 9, new DateTime(2024, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), 159.99000000000001, 40, 1 },
+                    { 10, 10, new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 599.99000000000001, 10, 2 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArticleStores_ArticleId",

@@ -17,97 +17,98 @@ namespace api.Data.EntityFramework
         {
             // Seed de datos
             modelBuilder.Entity<ArticleStoreEntity>().HasData(
-               new ArticleStoreEntity
-               {
-                   Id = 1,
-                   Price = 1299.99,
-                   Stock = 10,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 1, 
-                   StoreId = 1     
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 2,
-                   Price = 999.99,
-                   Stock = 15,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 2,  
-                   StoreId = 1     
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 3,
-                   Price = 299.99,
-                   Stock = 20,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 3,  
-                   StoreId = 2    
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 4,
-                   Price = 199.99,
-                   Stock = 25,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 4,  
-                   StoreId = 2    
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 5,
-                   Price = 79.99,
-                   Stock = 30,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 5, 
-                   StoreId = 1    
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 6,
-                   Price = 349.99,
-                   Stock = 12,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 6,  
-                   StoreId = 2     
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 7,
-                   Price = 499.99,
-                   Stock = 8,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 7, 
-                   StoreId = 1     
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 8,
-                   Price = 1099.99,
-                   Stock = 5,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 8, 
-                   StoreId = 2    
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 9,
-                   Price = 159.99,
-                   Stock = 40,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 9,  
-                   StoreId = 1    
-               },
-               new ArticleStoreEntity
-               {
-                   Id = 10,
-                   Price = 599.99,
-                   Stock = 10,
-                   Date = DateTime.UtcNow,
-                   ArticleId = 10,  
-                   StoreId = 2      
-               }
+                new ArticleStoreEntity
+                {
+                    Id = 1,
+                    Price = 1299.99,
+                    Stock = 10,
+                    Date = new DateTime(2024, 03, 01), 
+                    ArticleId = 1,  
+                    StoreId = 1      
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 2,
+                    Price = 999.99,
+                    Stock = 15,
+                    Date = new DateTime(2024, 03, 02), 
+                    ArticleId = 2,  
+                    StoreId = 1     
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 3,
+                    Price = 299.99,
+                    Stock = 20,
+                    Date = new DateTime(2024, 03, 03), 
+                    ArticleId = 3,  
+                    StoreId = 2     
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 4,
+                    Price = 199.99,
+                    Stock = 25,
+                    Date = new DateTime(2024, 03, 04), 
+                    ArticleId = 4,  
+                    StoreId = 2    
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 5,
+                    Price = 79.99,
+                    Stock = 30,
+                    Date = new DateTime(2024, 03, 05), 
+                    ArticleId = 5,  
+                    StoreId = 1     
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 6,
+                    Price = 349.99,
+                    Stock = 12,
+                    Date = new DateTime(2024, 03, 06), 
+                    ArticleId = 6,  
+                    StoreId = 2    
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 7,
+                    Price = 499.99,
+                    Stock = 8,
+                    Date = new DateTime(2024, 03, 07), 
+                    ArticleId = 7,  
+                    StoreId = 1    
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 8,
+                    Price = 1099.99,
+                    Stock = 5,
+                    Date = new DateTime(2024, 03, 08), 
+                    ArticleId = 8, 
+                    StoreId = 2    
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 9,
+                    Price = 159.99,
+                    Stock = 40,
+                    Date = new DateTime(2024, 03, 09), 
+                    ArticleId = 9, 
+                    StoreId = 1    
+                },
+                new ArticleStoreEntity
+                {
+                    Id = 10,
+                    Price = 599.99,
+                    Stock = 10,
+                    Date = new DateTime(2024, 03, 10), 
+                    ArticleId = 10,  
+                    StoreId = 2      
+                }
             );
+
 
             modelBuilder.Entity<StoreEntity>().HasData(
                 new StoreEntity

@@ -12,7 +12,7 @@ using api.Data.EntityFramework;
 namespace api.Data.EntityFramework.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250312064846_InitialMigration")]
+    [Migration("20250312173349_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -48,6 +48,88 @@ namespace api.Data.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Articles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "LAP001",
+                            Description = "Ultrabook de alto rendimiento con pantalla táctil 4K.",
+                            ImagePath = "https://m.media-amazon.com/images/I/91MXLpouhoL.jpg",
+                            Name = "Laptop Dell XPS 13"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "IPH014",
+                            Description = "Smartphone con cámara de 48 MP y procesador A16 Bionic.",
+                            ImagePath = "https://ss632.liverpool.com.mx/xl/1145923731.jpg",
+                            Name = "iPhone 14 Pro"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "MON002",
+                            Description = "Monitor UHD de 32 pulgadas con HDR10+.",
+                            ImagePath = "https://example.com/images/monitor-samsung-4k.jpg",
+                            Name = "Monitor Samsung 4K"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "TEC004",
+                            Description = "Teclado mecánico inalámbrico con switches táctiles.",
+                            ImagePath = "https://m.media-amazon.com/images/I/71dc-E1RYyL._AC_UF894,1000_QL80_.jpg",
+                            Name = "Teclado Mecánico Logitech G915"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "MOU005",
+                            Description = "Mouse ergonómico para gaming con sensor óptico de 20K DPI.",
+                            ImagePath = "https://ss637.liverpool.com.mx/xl/1134205390.jpg",
+                            Name = "Mouse Razer DeathAdder"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "AUD006",
+                            Description = "Auriculares inalámbricos con cancelación de ruido líder en la industria.",
+                            ImagePath = "https://www.sony.com.mx/image/6145c1d32e6ac8e63a46c912dc33c5bb?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF",
+                            Name = "Auriculares Sony WH-1000XM5"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "SIL007",
+                            Description = "Silla ergonómica con soporte lumbar ajustable y cuero sintético premium.",
+                            ImagePath = "https://images.secretlab.co/turntable/tr:n-w_450/M07-E24SU-MCLRN1R_02.jpg",
+                            Name = "Silla Gamer Secretlab Titan Evo"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "TAB008",
+                            Description = "Tablet con chip M2, pantalla Liquid Retina XDR y compatibilidad con Apple Pencil.",
+                            ImagePath = "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/112024_SP723-iPad_Pro.png",
+                            Name = "Tablet iPad Pro 12.9"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "SSD009",
+                            Description = "SSD NVMe con velocidades de lectura hasta 7000 MB/s.",
+                            ImagePath = "https://m.media-amazon.com/images/I/71GLjKuxf7L.jpg",
+                            Name = "Disco SSD Samsung 980 Pro 1TB"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "REL010",
+                            Description = "Smartwatch multideporte con GPS y batería de larga duración.",
+                            ImagePath = "https://cdn1.coppel.com/images/catalog/mkp/7463/3000/74631252-1.jpg",
+                            Name = "Reloj Inteligente Garmin Fenix 7"
+                        });
                 });
 
             modelBuilder.Entity("api.Data.Entities.ArticleStoreEntity", b =>
@@ -80,6 +162,98 @@ namespace api.Data.EntityFramework.Migrations
                     b.HasIndex("StoreId");
 
                     b.ToTable("ArticleStores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ArticleId = 1,
+                            Date = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 1299.99,
+                            Stock = 10,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ArticleId = 2,
+                            Date = new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 999.99000000000001,
+                            Stock = 15,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ArticleId = 3,
+                            Date = new DateTime(2024, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 299.99000000000001,
+                            Stock = 20,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ArticleId = 4,
+                            Date = new DateTime(2024, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 199.99000000000001,
+                            Stock = 25,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ArticleId = 5,
+                            Date = new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 79.989999999999995,
+                            Stock = 30,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ArticleId = 6,
+                            Date = new DateTime(2024, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 349.99000000000001,
+                            Stock = 12,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ArticleId = 7,
+                            Date = new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 499.99000000000001,
+                            Stock = 8,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ArticleId = 8,
+                            Date = new DateTime(2024, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 1099.99,
+                            Stock = 5,
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ArticleId = 9,
+                            Date = new DateTime(2024, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 159.99000000000001,
+                            Stock = 40,
+                            StoreId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ArticleId = 10,
+                            Date = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Price = 599.99000000000001,
+                            Stock = 10,
+                            StoreId = 2
+                        });
                 });
 
             modelBuilder.Entity("api.Data.Entities.CustomerArticleEntity", b =>
@@ -133,6 +307,20 @@ namespace api.Data.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stores");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Av. Principal 123, Ciudad Central, CP 10000",
+                            Name = "Tech Store Centro"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Calle Secundaria 456, Zona Norte, CP 20000",
+                            Name = "Tech Store Norte"
+                        });
                 });
 
             modelBuilder.Entity("api.Data.Entities.UserEntity", b =>
