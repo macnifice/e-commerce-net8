@@ -1,0 +1,59 @@
+<form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title>{{ isEditing ? 'Editar Artículo en Tienda' : 'Asignar Artículo a Tienda' }}</h2>
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content class="form-container">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Seleccionar Artículo</mat-label>
+      <input matInput
+             type="text"
+             placeholder="Buscar artículo..."
+             [formControl]="productCtrl"
+             [matAutocomplete]="auto"
+             [readonly]="isEditing">
+      <mat-icon matPrefix>search</mat-icon>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onArticleSelected($event)">
+        <mat-option *ngFor="let article of filteredProducts | async" [value]="article">
+          <div class="article-option">
+            <span class="article-name">{{article.name}}</span>
+            <small class="article-code" *ngIf="article.code">({{article.code}})</small>
+          </div>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div class="form-row full-width">
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Precio</mat-label>
+        <input matInput formControlName="price" type="number" min="0" step="0.01" required>
+        <mat-icon matPrefix>attach_money</mat-icon>
+        <mat-error *ngIf="articleForm.get('price')?.hasError('required')">El precio es obligatorio</mat-error>
+        <mat-error *ngIf="articleForm.get('price')?.hasError('min')">El precio debe ser mayor o igual a cero</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Stock</mat-label>
+        <input matInput formControlName="stock" type="number" min="0" step="1" required>
+        <mat-icon matPrefix>inventory</mat-icon>
+        <mat-error *ngIf="articleForm.get('stock')?.hasError('required')">El stock es obligatorio</mat-error>
+        <mat-error *ngIf="articleForm.get('stock')?.hasError('min')">El stock debe ser mayor o igual a cero</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Fecha</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-icon matPrefix>event</mat-icon>
+      <mat-error *ngIf="articleForm.get('date')?.hasError('required')">La fecha es obligatoria</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="articleForm.invalid">
+      {{ isEditing ? 'Actualizar' : 'Asignar' }}
+    </button>
+  </mat-dialog-actions>
+</form>

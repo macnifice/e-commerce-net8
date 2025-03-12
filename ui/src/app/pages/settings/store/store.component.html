@@ -1,0 +1,44 @@
+<div class="stores-container">
+  <div class="stores-header">
+    <h2>Tiendas</h2>
+    <button mat-mini-fab color="primary" (click)="openNewStoreDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-list role="list" class="stores-list">
+    <mat-list-item role="listitem" *ngFor="let store of dataSource.data"
+      [class.selected]="store === selectedStore"
+      (click)="selectStore(store)">
+      <div class="store-item">
+        <div class="store-info">
+          <span class="store-name">{{store.name}}</span>
+          <span class="store-address">{{store.address}}</span>
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="storeMenu" (click)="$event.stopPropagation()">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #storeMenu="matMenu">
+          <button mat-menu-item (click)="editStore(store)">
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+          </button>
+          <button mat-menu-item (click)="deleteStore(store)">
+            <mat-icon>delete</mat-icon>
+            <span>Eliminar</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-list-item>
+
+    <div class="no-stores" *ngIf="dataSource.data.length === 0">
+      <mat-icon>store</mat-icon>
+      <p>No se encontraron tiendas</p>
+      <button mat-raised-button color="primary" (click)="openNewStoreDialog()">
+        Crear tienda
+      </button>
+    </div>
+  </mat-list>
+</div>

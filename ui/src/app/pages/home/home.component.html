@@ -1,0 +1,26 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <div class="section-title">
+    <h2>Catálogo de productos</h2>
+    <span class="section-subtitle">Explora todos nuestros productos</span>
+  </div>
+
+  <div class="products-grid">
+    <mat-card class="product-card" *ngFor="let product of allProducts">
+      <img mat-card-image [src]="product.imagePath" [alt]="product.name">
+      <mat-card-content>
+        <h3>{{product.name}}</h3>
+        <small>{{product.code}}</small>
+        <p class="product-description">{{product.description}}</p>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button mat-stroked-button color="accent" class="action-button" [routerLink]="['/product-detail', product.id]">
+          <mat-icon>visibility</mat-icon> Ver más
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <mat-paginator [length]="100" [pageSize]="12" [pageSizeOptions]="[12, 24, 36]"></mat-paginator>
+</div>

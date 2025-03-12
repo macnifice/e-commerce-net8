@@ -1,0 +1,61 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <div class="back-button">
+    <button mat-icon-button color="primary" [routerLink]="['/']">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Volver al catálogo</span>
+  </div>
+
+  <div class="product-detail-container" *ngIf="product">
+    <div class="product-image">
+      <img [src]="product.imagePath" [alt]="product.name">
+    </div>
+
+    <div class="product-info">
+      <div *ngIf="userData?.role === 'Customer'" class="action-buttons">
+        <button mat-stroked-button color="primary" [routerLink]="['/']">
+          <mat-icon>shopping_bag</mat-icon> Continuar comprando
+        </button>
+        <button mat-raised-button color="accent" [routerLink]="['/cart']">
+          <mat-icon>shopping_cart</mat-icon> Ir al carrito
+        </button>
+      </div>
+      <h1 class="product-name">{{product.name}}</h1>
+      <p class="product-code">Código: {{product.code}}</p>
+      <p class="product-description">{{product.description}}</p>
+
+      <mat-divider></mat-divider>
+
+      <h2>Disponible en tiendas</h2>
+
+      <div class="stores-container" *ngIf="product.store && product.store.length > 0">
+        <mat-card class="store-card" *ngFor="let store of product.store">
+          <mat-card-header>
+            <mat-card-title>{{store.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="store-address"><mat-icon>location_on</mat-icon> {{store.address}}</p>
+            <p class="store-price">Precio: ${{store.price}}</p>
+            <p class="store-stock">Stock disponible: {{store.stock}}</p>
+          </mat-card-content>
+          <mat-card-actions *ngIf="userData?.role === 'Customer'">
+            <button mat-raised-button color="primary" (click)="addToCart(store)" [disabled]="store.stock <= 0">
+              <mat-icon>add_shopping_cart</mat-icon> Agregar al carrito
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+      <div class="no-stores" *ngIf="!product.store || product.store.length === 0">
+        <p>Este producto no está disponible en ninguna tienda actualmente.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading-container" *ngIf="!product">
+    <mat-spinner></mat-spinner>
+    <p>Cargando información del producto...</p>
+  </div>
+</div>

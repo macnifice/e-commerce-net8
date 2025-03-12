@@ -1,0 +1,48 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.settings-layout {
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.stores-sidebar {
+  width: 300px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.content-area {
+  padding: 20px;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .stores-sidebar {
+    width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidenav-container {
+    height: auto;
+  }
+
+  .stores-sidebar {
+    width: 100%;
+  }
+}
+
+.tab-content {
+  padding: 20px;
+}

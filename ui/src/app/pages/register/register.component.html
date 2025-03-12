@@ -1,0 +1,95 @@
+<div class="register-container">
+  <mat-card class="register-card">
+    <mat-card-header>
+      <mat-card-title>Registrar usuario</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>
+              Datos de usuario
+            </ng-template>
+            <div class="form-field-container">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nombre de usuario</mat-label>
+                <input matInput formControlName="userName" placeholder="Ingresa tu nombre de usuario" type="text"
+                  required>
+                <mat-icon matPrefix>person</mat-icon>
+                <mat-error *ngIf="firstFormGroup.get('userName')?.hasError('required')">El nombre de usuario es
+                  obligatorio</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="password" placeholder="Ingresa tu contraseña" type="password" required>
+                <mat-icon matPrefix>lock</mat-icon>
+                <mat-error *ngIf="firstFormGroup.get('password')?.hasError('required')">La contraseña es
+                  obligatoria</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Confirmar contraseña</mat-label>
+                <input matInput formControlName="confirmPassword" placeholder="Confirma tu contraseña" type="password"
+                  required>
+                <mat-icon matPrefix>lock</mat-icon>
+                <mat-error *ngIf="firstFormGroup.get('confirmPassword')?.hasError('required')">La confirmación de
+                  contraseña es obligatoria</mat-error>
+                <mat-error *ngIf="firstFormGroup.get('confirmPassword')?.hasError('passwordMismatch')">Las contraseñas
+                  no
+                  coinciden</mat-error>
+              </mat-form-field>
+              <div class="navigation-button">
+                <button mat-button (click)="onCancel()">Cancel</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmit()">
+            <ng-template matStepLabel>
+              Datos personales
+            </ng-template>
+            <div class="form-field-container">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nombres</mat-label>
+                <input matInput formControlName="name" placeholder="Ingresa tu nombre" type="text" required>
+                <mat-icon matPrefix>person</mat-icon>
+                <mat-error *ngIf="secondFormGroup.get('name')?.hasError('required')">El nombre es
+                  obligatorio</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Apellidos</mat-label>
+                <input matInput formControlName="lastName" placeholder="Ingresa tu apellido" type="text" required>
+                <mat-icon matPrefix>person</mat-icon>
+                <mat-error *ngIf="secondFormGroup.get('lastName')?.hasError('required')">El apellido es
+                  obligatorio</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Ingresa tu email" type="email" required>
+                <mat-icon matPrefix>email</mat-icon>
+                <mat-error *ngIf="secondFormGroup.get('email')?.hasError('required')">El email es
+                  obligatorio</mat-error>
+                <mat-error *ngIf="secondFormGroup.get('email')?.hasError('email')">El email no es válido</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Dirección</mat-label>
+                <input matInput formControlName="address" placeholder="Ingresa tu dirección" type="text">
+                <mat-icon matPrefix>location_on</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <div class="button-container">
+              <button mat-raised-button color="primary" type="submit" class="register-button"
+                [disabled]="firstFormGroup.invalid || secondFormGroup.invalid">
+                REGISTRAR
+              </button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-stepper>
+    </mat-card-content>
+
+  </mat-card>
+</div>

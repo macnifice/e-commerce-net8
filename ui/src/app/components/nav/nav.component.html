@@ -1,0 +1,57 @@
+<mat-toolbar color="primary" class="navbar">
+  <div class="container">
+    <!-- Lado izquierdo: Logo y navegación -->
+    <div class="nav-left">
+      <a mat-button class="logo" routerLink="/">
+        <mat-icon>store</mat-icon>
+        <span>E-Commerce</span>
+      </a>
+    </div>
+
+    <!-- Lado derecho: Carrito y login/logout -->
+    <div class="nav-right">
+
+      <button *ngIf="isLoggedIn && userData.role === 'Customer'" mat-icon-button class="cart-button" routerLink="/cart" [matBadge]="cartItemCount"
+        [matBadgeHidden]="cartItemCount === 0" matBadgeColor="accent" matTooltip="Ver carrito">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+
+      <ng-container *ngIf="isLoggedIn; else loginButton">
+        <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+          <mat-icon>person</mat-icon>
+          <span class="username">{{ userData.userName }}</span>
+          <small *ngIf="userData.email">({{ userData.email }})</small>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu" xPosition="before">
+          <button mat-menu-item routerLink="/profile">
+            <mat-icon>account_circle</mat-icon>
+            <span>Mi perfil</span>
+          </button>
+          <button *ngIf="userData.role === 'Admin'" mat-menu-item routerLink="/control-panel">
+            <mat-icon>settings</mat-icon>
+            <span>Panel de administración</span>
+          </button>
+          <button *ngIf="userData.role === 'Customer'" mat-menu-item routerLink="/order-history">
+            <mat-icon>receipt_long</mat-icon>
+            <span>Mis pedidos</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Cerrar sesión</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+
+      <ng-template #loginButton>
+        <button mat-button routerLink="/login" class="login-button">
+          <mat-icon>login</mat-icon>
+          <span>Iniciar sesión</span>
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</mat-toolbar>
+
+<!-- Separador de espacio para que el contenido no quede debajo de la barra de navegación -->
+<div class="toolbar-spacer"></div>

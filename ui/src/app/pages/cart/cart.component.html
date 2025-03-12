@@ -1,0 +1,94 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <div class="back-button">
+    <button mat-icon-button color="primary" [routerLink]="['/']">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Volver al catálogo</span>
+  </div>
+
+  <div class="cart-header">
+    <h1>Mi Carrito de Compras</h1>
+  </div>
+
+  <div class="empty-cart" *ngIf="cartItems.length === 0">
+    <mat-icon>shopping_cart</mat-icon>
+    <h2>Tu carrito está vacío</h2>
+    <p>¡Explora nuestro catálogo y agrega productos a tu carrito!</p>
+    <button mat-raised-button color="primary" [routerLink]="['/']">
+      Ir al catálogo
+    </button>
+  </div>
+
+  <div class="cart-content" *ngIf="cartItems.length > 0">
+    <div class="cart-items">
+      <mat-card *ngFor="let item of cartItems" class="cart-item">
+        <div class="item-image">
+          <img [src]="item.productImage" [alt]="item.productName">
+        </div>
+
+        <div class="item-details">
+          <h3>{{item.productName}}</h3>
+          <p class="item-store">Tienda: {{item.storeName}}</p>
+          <p class="item-price">Precio: ${{item.price}}</p>
+        </div>
+
+        <div class="item-quantity">
+          <button mat-icon-button (click)="decreaseQuantity(item)" [disabled]="item.quantity <= 1">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span>{{item.quantity}}</span>
+          <button mat-icon-button (click)="increaseQuantity(item)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <div class="item-subtotal">
+          <p>Subtotal: ${{(item.price * item.quantity).toFixed(2)}}</p>
+        </div>
+
+        <div class="item-actions">
+          <button mat-icon-button color="warn" (click)="removeItem(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="cart-summary">
+      <mat-card>
+        <h2>Resumen del Pedido</h2>
+
+        <div class="summary-row">
+          <span>Productos ({{getTotalItems()}})</span>
+          <span>${{getTotalAmount().toFixed(2)}}</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Envío</span>
+          <span>GRATIS</span>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="summary-row total">
+          <span>Total</span>
+          <span>${{getTotalAmount().toFixed(2)}}</span>
+        </div>
+
+        <button mat-raised-button color="primary" class="checkout-button" (click)="checkout()">
+          Finalizar Compra
+        </button>
+
+        <button mat-stroked-button color="accent" class="continue-shopping" [routerLink]="['/']">
+          Seguir Comprando
+        </button>
+
+        <button mat-stroked-button color="warn" class="checkout-button" (click)="clearCart()">
+          Vaciar Carrito
+        </button>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<form [formGroup]="storeForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title>{{ isEditing ? 'Editar Tienda' : 'Nueva Tienda' }}</h2>
+  <mat-divider></mat-divider>
+  <mat-dialog-content class="form-container">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" placeholder="Ingrese nombre de la tienda" required>
+        <mat-icon matPrefix>store</mat-icon>
+        <mat-error *ngIf="storeForm.get('name')?.hasError('required')">El nombre es obligatorio</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="address" placeholder="Ingrese dirección de la tienda" required>
+        <mat-icon matPrefix>location_on</mat-icon>
+        <mat-error *ngIf="storeForm.get('address')?.hasError('required')">La dirección es obligatoria</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="storeForm.invalid">
+      {{ isEditing ? 'Actualizar' : 'Crear' }}
+    </button>
+  </mat-dialog-actions>
+</form>
+
+
+

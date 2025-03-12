@@ -1,0 +1,39 @@
+<form [formGroup]="articleCatalogForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title>{{ isEditing ? 'Editar Artículo' : 'Nuevo Artículo' }}</h2>
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content class="form-container">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" placeholder="Ingrese nombre del artículo" required>
+      <mat-icon matPrefix>inventory_2</mat-icon>
+      <mat-error *ngIf="articleCatalogForm.get('name')?.hasError('required')">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="code" placeholder="Ingrese código del artículo" required>
+      <mat-icon matPrefix>qr_code</mat-icon>
+      <mat-error *ngIf="articleCatalogForm.get('code')?.hasError('required')">El código es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>URL de imagen</mat-label>
+      <input matInput formControlName="imagePath" placeholder="Ingrese URL de la imagen">
+      <mat-icon matPrefix>image</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" placeholder="Ingrese descripción del artículo" rows="3"></textarea>
+      <mat-icon matPrefix>description</mat-icon>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="articleCatalogForm.invalid">
+      {{ isEditing ? 'Actualizar' : 'Crear' }}
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,31 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <div class="profile-header">
+    <h1>Mi Perfil</h1>
+    <p>Información de tu cuenta</p>
+  </div>
+
+  <mat-card class="profile-card">
+    <div class="profile-content">
+      <div class="profile-avatar">
+        <mat-icon class="avatar-icon">account_circle</mat-icon>
+      </div>
+
+      <div class="profile-info">
+        <h2>{{ userData.name }} {{ userData.lastName }}</h2>
+        <p class="user-role">{{ userData.role }}</p>
+
+        <mat-divider></mat-divider>
+
+        <div class="info-item">
+          <mat-icon>email</mat-icon>
+          <div>
+            <span class="label">Correo electrónico:</span>
+            <span class="value">{{ userData.email }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
