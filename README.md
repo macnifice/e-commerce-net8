@@ -88,6 +88,11 @@ Una vez que ambos servicios estén en ejecución, puedes acceder a la aplicació
 - **API**: https://localhost:7211
 - **Swagger**: https://localhost:7211/swagger
 
+## 📖 Guía de Uso del E-Commerce
+
+Consulta el manual de usuario aquí:  
+[👉 Ver Guía Completa](https://gist.github.com/macnifice/ef5cee2b03be3fdb9d92e61466de4469)
+
 ## Solución de problemas comunes
 
 ### Error de conexión a la base de datos
